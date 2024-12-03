@@ -11,9 +11,9 @@ static const int topbar             = 1;        /* 0 means standard bar at botto
 static const int extrabar           = 1;        /* 0 means no extra bar */
 static const char statussep         = ';';      /* separator between statuses */
 #define ICONSIZE 16   /* icon size */
-#define ICONSPACING 5 /* space between icon and title */
-static const char *fonts[]          = { "monospace:size=10" };
-static const char dmenufont[]       = "monospace:size=10";
+#define ICONSPACING 8 /* space between icon and title */
+static const char *fonts[]          = { "monospace:size=12" };
+static const char dmenufont[]       = "monospace:size=12";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -48,12 +48,11 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
-	{ "Gimp",    NULL,     NULL,            0,          1,          0,           0,		-1 },
-	{ "Firefox", NULL,     NULL,            1 << 8,     0,          0,          -1,		-1 },
+	{ NULL,    NULL,     NULL,            0,          1,          0,           0,		-1 },
 	{ "St",      NULL,     NULL,	        0,          0,          1,           0,		-1 },
 	{ NULL,	     "spterm",	NULL,		SPTAG(0),   0,		1,	     0,		-1 },
 	{ NULL,	     "spfm",	NULL,		SPTAG(1),   0,		1,	     0,		-1 },
-	{ NULL,	     "keepassxc",NULL,		SPTAG(2),   0,		0,	     0,		-1 },
+	{ NULL,	     "keepassxc",NULL,		SPTAG(2),   1,		0,	     0,		-1 },
 	{ NULL,      NULL,     "Event Tester",	0,          0,          0,           1,		-1 }, /* xev */
 };
 
@@ -91,8 +90,8 @@ static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
-	{ MODKEY|ShiftMask,             XK_b,      toggleextrabar, {0} },
+	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
+	{ MODKEY|ControlMask,           XK_b,      toggleextrabar, {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },

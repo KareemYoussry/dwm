@@ -1,3 +1,6 @@
+# DWM-Specific
+config.h
+
 # Prerequisites
 *.d
 
